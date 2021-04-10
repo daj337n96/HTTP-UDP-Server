@@ -51,13 +51,6 @@ def createserver():
         thread = threading.Thread(target=handle_client, args=(client_data, client_address))
         thread.start()
         print(f"[ACTIVE CONNECTIONS] {threading.activeCount() -1}")
-        
-        # valid data
-        #if(len(pieces) > 0):
-            #print(pieces[0])
-
-        #print(f'received {data_length} bytes from {client_address}') 
-        #print(client_data.decode())
 
 print(f"Access http://{SERVER}:8000")
 createserver()
