@@ -26,19 +26,16 @@ data_to_client += "\r\n"
 data_to_client += "<html><body>EE-4210: Continuous assessment.<body><html>\r\n\r\n"
             
 #################################### Client conenction and comms ####################################
+# sendto() used to send to right address since connectionless
+# UDP blasts out message immeidtaely as it does not verify data
 def handle_client(client_data, client_address):
     print(f"\n[NEW CONNECTION] {client_address} connected\n")
     #data_length = len(client_data)
-    # break pieces by \n
-    #pieces = client_data.decode().split("\n")
-
-    # sendto() used to send to right address since connectionless
-    # UDP blasts out message immeidtaely as it does not verify data
     sent = serversocket.sendto(data_to_client.encode(), client_address)
     #print(f'sent {sent} bytes back to {client_address}')
     
 
-def createserver():
+def server():
     print('\nwaiting to receive message\n')
     while (1):
         # UDP connectionless so no listen() & accept()
@@ -52,4 +49,4 @@ def createserver():
 
 
 print(f"Access http://{SERVER}:8000")
-createserver()
+server()
