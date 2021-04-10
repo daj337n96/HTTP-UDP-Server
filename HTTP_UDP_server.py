@@ -10,9 +10,7 @@ local_dt = datetime.now()
 SERVER = gethostbyname(gethostname())
 PORT = 8000
 server_address = (SERVER, PORT)
-
 serversocket = socket(AF_INET, SOCK_DGRAM)
-
 # Bind the socket to the port
 serversocket.bind(server_address)
 
