@@ -29,7 +29,7 @@ data_to_client += "<html><body>EE-4210: Continuous assessment.<body><html>\r\n\r
 # sendto() used to send to right address since connectionless
 # UDP blasts out message immeidtaely as it does not verify data
 def handle_client(client_data, client_address):
-    print(f"\n[NEW CONNECTION] {client_address} connected\n")
+    print(f"[NEW CONNECTION] {client_address} connected\n")
     #data_length = len(client_data)
     sent = serversocket.sendto(data_to_client.encode(), client_address)
     #print(f'sent {sent} bytes back to {client_address}')
@@ -41,11 +41,12 @@ def server():
         # UDP connectionless so no listen() & accept()
         # data & address received from client
         (client_data, client_address) = serversocket.recvfrom(4096)
+        print(f"Received: {client_data.decode()}")
         
         # New thread started for client --> handle_client
         thread = threading.Thread(target=handle_client, args=(client_data, client_address))
         thread.start()
-        print(f"[ACTIVE CONNECTIONS] {threading.activeCount() -1}")
+        #print(f"[ACTIVE CONNECTIONS] {threading.activeCount() -1}")
 
 
 print(f"Access http://{SERVER}:8000")
