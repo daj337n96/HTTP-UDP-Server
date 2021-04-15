@@ -1,7 +1,7 @@
 from socket import *
 import sys
 
-SERVER = 'localhost'
+SERVER = gethostbyname(gethostname())
 PORT = 8000
 
 
